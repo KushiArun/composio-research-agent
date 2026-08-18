@@ -59,10 +59,21 @@ GROQ_API_KEY=your_groq_key
 ## Running it
 
 ```bash
-python research_agent.py     # researches all 100 apps, saves to results_v1.json
-python patterns.py           # clusters results into headline findings, saves patterns_summary.json
-python summarize.py          # quick verdict/confidence breakdown for a sanity check
+python research_agent.py           # researches all 100 apps, saves to results_v1.json
+python research_agent.py 3         # demo mode: only researches the first N apps
+python patterns.py                 # clusters results into headline findings, saves patterns_summary.json
+python summarize.py                # quick verdict/confidence breakdown for a sanity check
 ```
+
+### Run it live, without cloning anything
+
+The **"Run agent live →"** button in the case study's nav bar triggers a real GitHub
+Actions workflow ([`.github/workflows/demo-run.yml`](.github/workflows/demo-run.yml))
+that runs `research_agent.py` against a small live subset of apps, using the actual
+Composio and Groq APIs — not a mock. Anyone with repo access can trigger it from the
+Actions tab and watch the real pipeline execute, then download the output as a build
+artifact. This requires `COMPOSIO_API_KEY` and `GROQ_API_KEY` to be set as repo secrets
+(Settings → Secrets and variables → Actions).
 
 `research_agent.py` is safe to re-run at any point — it checkpoints after every app and
 skips anything that already has a solid result, so an interrupted run or a quota limit

@@ -1,3 +1,6 @@
+
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +47,7 @@
   a{color:var(--brand);}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
   ::selection{background:var(--brand); color:#fff;}
-
+ 
   /* NAV */
   nav{
     position:sticky; top:0; z-index:50;
@@ -54,10 +57,21 @@
   }
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px;}
   .nav-brand{font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; letter-spacing:0.02em;}
+  .nav-center{display:flex; align-items:center; gap:24px;}
   .nav-links{display:flex; gap:24px; font-family:'IBM Plex Mono',monospace; font-size:12.5px;}
   .nav-links a{color:var(--ink-soft); text-decoration:none;}
   .nav-links a:hover{color:var(--brand);}
-
+  .nav-actions{display:flex; gap:10px; align-items:center;}
+  .nav-btn{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; padding:6px 12px;
+    border-radius:6px; border:1px solid var(--line-strong); color:var(--ink-soft);
+    text-decoration:none; transition:all .12s ease;
+  }
+  .nav-btn:hover{border-color:var(--brand); color:var(--brand);}
+  .nav-btn.solid{background:var(--brand); color:#0A1512; border-color:var(--brand); font-weight:600;}
+  .nav-btn.solid:hover{opacity:0.88; color:#0A1512;}
+  @media(max-width:760px){ .nav-links{display:none;} }
+ 
   /* SECTION SCAFFOLD */
   section{padding:88px 0;}
   section.tight{padding:64px 0;}
@@ -70,7 +84,7 @@
     margin-bottom:18px;
   }
   .eyebrow::before{content:''; width:22px; height:1px; background:var(--brand);}
-
+ 
   /* HERO */
   .hero{padding-top:64px;}
   .hero h1{
@@ -84,7 +98,7 @@
     max-width:620px; margin-top:20px;
     color:var(--ink-soft); font-size:17px;
   }
-
+ 
   /* LEDGER GRID (signature element) */
   .ledger-wrap{margin-top:44px;}
   .ledger-grid{
@@ -108,7 +122,7 @@
   }
   .legend-item{display:flex; align-items:center; gap:7px;}
   .legend-dot{width:9px; height:9px; border-radius:2px;}
-
+ 
   .stat-row{
     display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
     margin-top:52px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
@@ -116,25 +130,41 @@
   .stat-cell{background:var(--panel); padding:22px 20px;}
   .stat-num{font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:600; line-height:1;}
   .stat-label{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft); margin-top:8px; text-transform:uppercase; letter-spacing:0.04em;}
-
+ 
   @media(max-width:640px){
     .stat-row{grid-template-columns:repeat(2,1fr);}
     .ledger-grid{grid-template-columns:repeat(20,1fr);}
   }
-
+ 
   /* PATTERNS */
   .pattern-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:28px; margin-top:36px;}
   @media(max-width:800px){.pattern-grid{grid-template-columns:1fr;}}
   .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:26px;}
   .card h3{font-size:16px; font-weight:600; margin-bottom:4px;}
   .card .sub{color:var(--ink-faint); font-size:13px; margin-bottom:20px;}
-
+ 
   .bar-row{display:flex; align-items:center; gap:12px; margin-bottom:12px;}
   .bar-label{width:190px; font-size:13px; color:var(--ink-soft); flex-shrink:0;}
   .bar-track{flex:1; height:8px; background:var(--neutral-soft); border-radius:4px; overflow:hidden;}
   .bar-fill{height:100%; background:var(--brand); border-radius:4px;}
   .bar-val{width:40px; text-align:right; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft); flex-shrink:0;}
-
+ 
+  /* MATRIX HEATMAP */
+  .matrix-wrap{overflow-x:auto; margin-top:36px;}
+  .matrix{border-collapse:collapse; font-size:12px; width:100%; min-width:640px;}
+  .matrix th{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; color:var(--ink-faint);
+    padding:8px 10px; text-align:center; font-weight:600;
+  }
+  .matrix th.row-head{text-align:left; font-size:12px; text-transform:none; color:var(--ink-soft);}
+  .matrix td{text-align:center; padding:6px;}
+  .matrix-cell{
+    width:100%; height:34px; border-radius:6px; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:var(--ink);
+  }
+  .matrix-legend{display:flex; align-items:center; gap:10px; margin-top:16px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-faint);}
+  .matrix-scale{display:flex; height:8px; width:100px; border-radius:4px; overflow:hidden;}
+ 
   .finding-list{list-style:none; margin:0; padding:0;}
   .finding-list li{
     padding:16px 0; border-top:1px solid var(--line);
@@ -144,7 +174,7 @@
   .finding-num{font-family:'IBM Plex Mono',monospace; color:var(--brand); font-size:13px; flex-shrink:0; width:22px;}
   .finding-text strong{font-weight:600;}
   .finding-text{font-size:14.5px; color:var(--ink-soft);}
-
+ 
   /* TABLE */
   .filter-bar{display:flex; flex-wrap:wrap; gap:8px; margin:28px 0 20px;}
   .pill{
@@ -172,19 +202,23 @@
   .app-name{font-weight:600;}
   .cat-tag{color:var(--ink-faint); font-size:12px;}
   .verdict-tag{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 9px; border-radius:20px;
-    display:inline-block; font-weight:600;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 9px 3px 7px; border-radius:20px;
+    display:inline-flex; align-items:center; gap:6px; font-weight:600;
   }
+  .status-dot{width:7px; height:7px; border-radius:50%; flex-shrink:0;}
   .v-buildable_today{background:var(--ok-soft); color:var(--ok);}
+  .v-buildable_today .status-dot{background:var(--ok);}
   .v-unclear{background:var(--neutral-soft); color:var(--neutral);}
+  .v-unclear .status-dot{background:var(--neutral);}
   .v-blocked{background:var(--bad-soft); color:var(--bad);}
+  .v-blocked .status-dot{background:var(--bad);}
   .auth-chip{
     font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);
     background:var(--neutral-soft); padding:2px 7px; border-radius:4px; margin-right:4px; display:inline-block; margin-bottom:2px;
   }
   .evi-link{font-size:12px; color:var(--brand); text-decoration:none;}
   .table-note{font-size:12.5px; color:var(--ink-faint); margin-top:12px;}
-
+ 
   /* AGENT PIPELINE */
   .pipeline{display:flex; gap:0; margin-top:40px; overflow-x:auto; padding-bottom:8px;}
   .pipe-step{
@@ -196,7 +230,7 @@
   .pipe-num{font-family:'IBM Plex Mono',monospace; color:var(--brand); font-size:12px;}
   .pipe-title{font-weight:600; font-size:14.5px; margin-top:6px;}
   .pipe-desc{font-size:12.5px; color:var(--ink-soft); margin-top:5px;}
-
+ 
   .terminal{
     background:#0A0D11; border-radius:var(--radius); padding:20px 22px; margin-top:14px;
     font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#B8BFC9; overflow-x:auto;
@@ -209,7 +243,7 @@
     border-left:3px solid var(--brand); background:var(--brand-soft);
     padding:14px 18px; margin-top:14px; border-radius:0 8px 8px 0; font-size:13.5px; color:#8FE8DC;
   }
-
+ 
   /* VERIFICATION */
   .verify-table{width:100%; border-collapse:collapse; margin-top:24px; font-size:13.5px;}
   .verify-table th{text-align:left; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); border-bottom:1px solid var(--line);}
@@ -217,18 +251,18 @@
   .result-correct{color:var(--ok); font-weight:600;}
   .result-partial{color:var(--warn); font-weight:600;}
   .result-miss{color:var(--bad); font-weight:600;}
-
+ 
   .accuracy-shift{display:flex; align-items:center; gap:24px; margin-top:32px; flex-wrap:wrap;}
   .shift-box{text-align:center;}
   .shift-num{font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700;}
   .shift-label{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:4px;}
   .shift-arrow{font-size:28px; color:var(--ink-faint);}
-
+ 
   footer{border-top:1px solid var(--line); padding:52px 0; margin-top:20px;}
   .foot-grid{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
   .foot-links{display:flex; gap:20px; font-family:'IBM Plex Mono',monospace; font-size:13px;}
   .foot-note{color:var(--ink-faint); font-size:12.5px; max-width:420px;}
-
+ 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     .cell{transition:none;}
@@ -236,19 +270,25 @@
 </style>
 </head>
 <body>
-
+ 
 <nav>
   <div class="wrap">
     <div class="nav-brand">100_APPS.LEDGER</div>
-    <div class="nav-links">
-      <a href="#patterns">Patterns</a>
-      <a href="#findings">Findings</a>
-      <a href="#agent">Agent</a>
-      <a href="#verification">Verification</a>
+    <div class="nav-center">
+      <div class="nav-links">
+        <a href="#patterns">Patterns</a>
+        <a href="#findings">Findings</a>
+        <a href="#agent">Agent</a>
+        <a href="#verification">Verification</a>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-btn" href="https://github.com/KushiArun/composio-research-agent" target="_blank" rel="noopener">Repo</a>
+        <a class="nav-btn solid" href="https://github.com/KushiArun/composio-research-agent/actions/workflows/demo-run.yml" target="_blank" rel="noopener">Run agent live →</a>
+      </div>
     </div>
   </div>
 </nav>
-
+ 
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">Composio App Research — Case Study</div>
@@ -256,7 +296,7 @@
     <p class="hero-sub">Category, auth method, self-serve vs. gated, and a buildability verdict for
     100 real apps — produced by an automated research agent, not by hand. Each cell below is one app.
     Hover to see its verdict.</p>
-
+ 
     <div class="ledger-wrap">
       <div class="ledger-grid" id="ledgerGrid"></div>
       <div class="ledger-legend">
@@ -265,16 +305,16 @@
         <div class="legend-item"><span class="legend-dot c-blocked"></span> Blocked</div>
       </div>
     </div>
-
+ 
     <div class="stat-row" id="statRow"></div>
   </div>
 </header>
-
+ 
 <section id="patterns">
   <div class="wrap">
     <div class="eyebrow">01 — The Patterns</div>
     <h2 style="font-size:28px; font-weight:600; max-width:640px;">The headline: dev tools give themselves away for free. Finance makes you ask permission.</h2>
-
+ 
     <ul class="finding-list" style="margin-top:32px; max-width:760px;">
       <li>
         <span class="finding-num">01</span>
@@ -297,7 +337,7 @@
         <span class="finding-text"><strong>34 buildable apps have no existing Composio toolkit yet.</strong> That's a ready-made, evidence-backed backlog — not a guess about what to build next, a list with a docs link for each one.</span>
       </li>
     </ul>
-
+ 
     <div class="pattern-grid">
       <div class="card">
         <h3>Self-serve rate by category</h3>
@@ -310,15 +350,28 @@
         <div id="authBars"></div>
       </div>
     </div>
+ 
+    <div class="card" style="margin-top:28px;">
+      <h3>Category × gate type matrix</h3>
+      <div class="sub">How many apps in each category fall behind each kind of gate. Darker = more apps.</div>
+      <div class="matrix-wrap">
+        <table class="matrix" id="gateMatrix"></table>
+      </div>
+      <div class="matrix-legend">
+        Fewer apps
+        <div class="matrix-scale" id="matrixScale"></div>
+        More apps
+      </div>
+    </div>
   </div>
 </section>
-
+ 
 <section id="findings" class="tight">
   <div class="wrap">
     <div class="eyebrow">02 — The Findings</div>
     <h2 style="font-size:28px; font-weight:600;">All 100, filterable</h2>
     <p style="color:var(--ink-soft); max-width:600px; margin-top:8px;">Every row traces back to a real docs URL. Filter by verdict or category, or search for an app.</p>
-
+ 
     <div class="filter-bar" id="verdictFilters"></div>
     <div class="filter-bar">
       <input class="search-input" id="searchBox" placeholder="Search app name…" />
@@ -326,7 +379,7 @@
         <option value="all">All categories</option>
       </select>
     </div>
-
+ 
     <div class="table-wrap">
       <table>
         <thead>
@@ -345,13 +398,13 @@
     <div class="table-note" id="rowCount"></div>
   </div>
 </section>
-
+ 
 <section id="agent">
   <div class="wrap">
     <div class="eyebrow">03 — The Agent</div>
     <h2 style="font-size:28px; font-weight:600;">What ran on its own, and where a human had to step in</h2>
     <p style="color:var(--ink-soft); max-width:640px; margin-top:8px;">A Python pipeline (Composio SDK + Groq + DuckDuckGo search) researched all 100 apps without manual lookup. It also failed in three real, logged ways — each one fixed, not hidden.</p>
-
+ 
     <div class="pipeline">
       <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-title">Search</div><div class="pipe-desc">Finds developer docs for each app via web search, retried on connection failure.</div></div>
       <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-title">Fetch</div><div class="pipe-desc">Pulls page text; detects bot-blocked pages and falls back to search snippets.</div></div>
@@ -359,34 +412,34 @@
       <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-title">Extract</div><div class="pipe-desc">An LLM call turns raw docs text into the 7-field schema, JSON-only, cited.</div></div>
       <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-title">Checkpoint</div><div class="pipe-desc">Saves after every app; a re-run only retries low-confidence records.</div></div>
     </div>
-
+ 
     <h3 style="font-size:16px; margin-top:52px;">Where the agent needed a human</h3>
     <div class="terminal">
 <span class="err-line">[Gemini] FAILED: 429 RESOURCE_EXHAUSTED — free tier limit: 20 requests/day</span>
 → 80 apps silently fell back to "unclear" on the first pass.
 <span class="ok-line">Fixed by: switching the extraction call to Groq (200k tokens/day free tier).</span>
-
+ 
 <span class="err-line">[Groq] FAILED: model `llama-3.3-70b-versatile` does not exist (deprecated mid-build)</span>
 → A second wave of failures, caught only by reading the logs line by line.
 <span class="ok-line">Fixed by: pinning to `openai/gpt-oss-120b`, verified with a grep before every re-run.</span>
-
+ 
 <span class="warn-line">[Groq] Rate limit reached — 199,396 / 200,000 daily tokens used</span>
 → The final ~9 apps (incl. Plaid) hit the wall and defaulted to low-confidence "unclear."
 <span class="ok-line">Fixed by: trimming the prompt's scraped-content window from 8k → 4k chars, and re-running after the quota window rolled over.</span>
     </div>
-
+ 
     <div class="human-note">
       A human (not the agent) chose the verification sample, ran the independent web searches to check the agent's claims, and decided which infrastructure failures were worth fixing vs. accepting as documented limitations. The agent never diagnosed its own quota exhaustion — that required reading raw error logs by hand.
     </div>
   </div>
 </section>
-
+ 
 <section id="verification" class="tight">
   <div class="wrap">
     <div class="eyebrow">04 — The Verification</div>
     <h2 style="font-size:28px; font-weight:600;">A 16-app sample, checked by hand against live docs</h2>
     <p style="color:var(--ink-soft); max-width:640px; margin-top:8px;">Stratified across categories and verdict types — including the hardest cases, not just the easy wins. Five were independently re-researched from scratch; results below.</p>
-
+ 
     <div class="accuracy-shift">
       <div class="shift-box">
         <div class="shift-num" style="color:var(--bad);">~30%</div>
@@ -398,7 +451,7 @@
         <div class="shift-label">ACTIONABLE VERDICTS<br>AFTER FIX + RETRY LOOP</div>
       </div>
     </div>
-
+ 
     <table class="verify-table">
       <thead>
         <tr><th>App</th><th>Agent claimed</th><th>Ground truth (verified live)</th><th>Result</th></tr>
@@ -436,13 +489,13 @@
         </tr>
       </tbody>
     </table>
-
+ 
     <p class="table-note" style="margin-top:16px;">3 of 5 deep-checked apps were fully correct. Both misses trace to a specific,
     logged infrastructure failure — not a reasoning error — and both were flagged by the agent's own confidence score
     before verification even started. The agent never confidently asserted something false in this sample.</p>
   </div>
 </section>
-
+ 
 <footer>
   <div class="wrap foot-grid">
     <div>
@@ -457,10 +510,10 @@
     </div>
   </div>
 </footer>
-
+ 
 <script>
 const DATA = [{"id":1,"app_name":"Salesforce","category":"CRM and Sales","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.salesforce.com/"]},{"id":2,"app_name":"HubSpot","category":"CRM and Sales","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.hubspot.com/"]},{"id":3,"app_name":"Pipedrive","category":"CRM and Sales","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.pipedrive.com/docs/api/v1"]},{"id":4,"app_name":"Attio","category":"CRM and Sales","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.attio.com/rest-api/overview"]},{"id":5,"app_name":"Twenty","category":"CRM and Sales","auth_methods":["OAuth2","API key"],"access_type":"mixed","gate_type":"unknown","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://docs.twenty.com/developers/extend/api"]},{"id":6,"app_name":"Podio","category":"CRM and Sales","auth_methods":["OAuth2","API key","Other"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developers.podio.com/authentication"]},{"id":7,"app_name":"Zoho CRM","category":"CRM and Sales","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html"]},{"id":8,"app_name":"Close","category":"CRM and Sales","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.close.com/api/overview/api-key-authentication"]},{"id":9,"app_name":"Copper","category":"CRM and Sales","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developer.copper.co/api-reference/getting-started"]},{"id":10,"app_name":"DealCloud","category":"CRM and Sales","auth_methods":["API key","Token"],"access_type":"gated","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://api.docs.dealcloud.com/docs"]},{"id":11,"app_name":"Zendesk","category":"Support and Helpdesk","auth_methods":["OAuth2","API key","Basic","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.zendesk.com/api-reference/"]},{"id":12,"app_name":"Intercom","category":"Support and Helpdesk","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.intercom.com/docs/references/rest-api/api.intercom.io"]},{"id":13,"app_name":"Freshdesk","category":"Support and Helpdesk","auth_methods":["Basic"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.freshdesk.com/api/"]},{"id":14,"app_name":"Front","category":"Support and Helpdesk","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://dev.frontapp.com/docs/authentication"]},{"id":15,"app_name":"Pylon","category":"Support and Helpdesk","auth_methods":["Unknown"],"access_type":"gated","gate_type":"paid_plan","buildability_verdict":"unclear","confidence":"medium","blocker":"Authentication mechanism not described in the provided text","composio_toolkit_exists":true,"evidence_urls":["https://docs.usepylon.com/pylon-docs/developer/api/authentication"]},{"id":16,"app_name":"LiveAgent","category":"Support and Helpdesk","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"unclear","confidence":"medium","blocker":"Authentication method not specified in the provided text","composio_toolkit_exists":false,"evidence_urls":["https://support.liveagent.com/docs/api/v3/"]},{"id":17,"app_name":"Plain","category":"Support and Helpdesk","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://www.plain.com/docs/graphql/authentication"]},{"id":18,"app_name":"Help Scout","category":"Support and Helpdesk","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developer.helpscout.com/mailbox-api/overview/authentication/"]},{"id":19,"app_name":"Gorgias","category":"Support and Helpdesk","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"unclear","confidence":"medium","blocker":"authentication method not specified in the provided text","composio_toolkit_exists":true,"evidence_urls":["https://developers.gorgias.com/reference/introduction"]},{"id":20,"app_name":"Gladly","category":"Support and Helpdesk","auth_methods":["Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developer.gladly.com/rest/"]},{"id":21,"app_name":"Slack","category":"Communications and Messaging","auth_methods":["OAuth2","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.slack.dev/authentication/"]},{"id":22,"app_name":"Twilio","category":"Communications and Messaging","auth_methods":["API key","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://www.twilio.com/docs/usage/api"]},{"id":23,"app_name":"Zoho Cliq","category":"Communications and Messaging","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://www.zoho.com/cliq/help/restapi/v3/oauth/"]},{"id":24,"app_name":"Lark (Larksuite)","category":"Communications and Messaging","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://open.larksuite.com/document/home/index?lang=en-US"]},{"id":25,"app_name":"Pumble","category":"Communications and Messaging","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/"]},{"id":26,"app_name":"Discord","category":"Communications and Messaging","auth_methods":["OAuth2","Token"],"access_type":"mixed","gate_type":"partnership","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.discord.com/developers/topics/oauth2"]},{"id":27,"app_name":"Telegram","category":"Communications and Messaging","auth_methods":["Other"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"blocked","confidence":"medium","blocker":"Requires phone-based verification code (and possible 2FA) for authentication","composio_toolkit_exists":false,"evidence_urls":["https://core.telegram.org/api/auth"]},{"id":28,"app_name":"WhatsApp Business","category":"Communications and Messaging","auth_methods":["OAuth2"],"access_type":"gated","gate_type":"partnership","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.facebook.com/docs/whatsapp"]},{"id":29,"app_name":"Aircall","category":"Communications and Messaging","auth_methods":["Basic"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.aircall.io/docs/authentication"]},{"id":30,"app_name":"Vonage","category":"Communications and Messaging","auth_methods":["API key","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developer.vonage.com/en/getting-started/concepts/authentication"]},{"id":31,"app_name":"Google Ads","category":"Marketing, Ads, Email and Social","auth_methods":["Unknown"],"access_type":"unknown","gate_type":"unknown","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.google.com/google-ads"]},{"id":32,"app_name":"Meta Ads","category":"Marketing, Ads, Email and Social","auth_methods":["OAuth2"],"access_type":"mixed","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.facebook.com/docs/marketing-apis"]},{"id":33,"app_name":"LinkedIn Ads","category":"Marketing, Ads, Email and Social","auth_methods":["OAuth2"],"access_type":"gated","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://learn.microsoft.com/linkedin/marketing"]},{"id":34,"app_name":"GoHighLevel","category":"Marketing, Ads, Email and Social","auth_methods":["OAuth2","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://highlevel.stoplight.io/"]},{"id":35,"app_name":"Mailchimp","category":"Marketing, Ads, Email and Social","auth_methods":["OAuth2","API key","Basic","Token"],"access_type":"mixed","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://mailchimp.com/developer/marketing/api/"]},{"id":36,"app_name":"Klaviyo","category":"Marketing, Ads, Email and Social","auth_methods":["OAuth2","API key"],"access_type":"mixed","gate_type":"partnership","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.klaviyo.com/en/reference/api_overview"]},{"id":37,"app_name":"systeme.io","category":"Marketing, Ads, Email and Social","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://help.systeme.io/article/2323-how-to-create-a-public-api-key-on-systeme-io"]},{"id":38,"app_name":"Pinterest","category":"Marketing, Ads, Email and Social","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.pinterest.com/docs/getting-started/authentication-and-scopes/"]},{"id":39,"app_name":"Threads (Meta)","category":"Marketing, Ads, Email and Social","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developers.facebook.com/docs/threads"]},{"id":40,"app_name":"SendGrid","category":"Marketing, Ads, Email and Social","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://sendgrid.com/"]},{"id":41,"app_name":"Shopify","category":"Ecommerce","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://shopify.dev/docs/api/usage/authentication"]},{"id":42,"app_name":"WooCommerce","category":"Ecommerce","auth_methods":["API key","Basic"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://woocommerce.com/document/woocommerce-rest-api/"]},{"id":43,"app_name":"BigCommerce","category":"Ecommerce","auth_methods":["Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developer.bigcommerce.com/"]},{"id":44,"app_name":"Salesforce Commerce Cloud","category":"Ecommerce","auth_methods":["OAuth2"],"access_type":"gated","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.salesforce.com/docs/commerce"]},{"id":45,"app_name":"Magento (Adobe Commerce)","category":"Ecommerce","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developer.adobe.com/commerce/"]},{"id":46,"app_name":"Squarespace","category":"Ecommerce","auth_methods":["Unknown"],"access_type":"gated","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.squarespace.com/"]},{"id":47,"app_name":"Ecwid","category":"Ecommerce","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://api-docs.ecwid.com/"]},{"id":48,"app_name":"Gumroad","category":"Ecommerce","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://gumroad.com/api"]},{"id":49,"app_name":"Amazon Selling Partner","category":"Ecommerce","auth_methods":["OAuth2"],"access_type":"gated","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developer-docs.amazon.com/sp-api"]},{"id":50,"app_name":"fanbasis","category":"Ecommerce","auth_methods":["API key","Unknown"],"access_type":"mixed","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://fanbasis.com/"]},{"id":51,"app_name":"DataForSEO","category":"Data, SEO and Scraping","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.dataforseo.com/"]},{"id":52,"app_name":"SE Ranking","category":"Data, SEO and Scraping","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"paid_plan","buildability_verdict":"unclear","confidence":"medium","blocker":"Authentication method not specified in the provided text","composio_toolkit_exists":false,"evidence_urls":["https://seranking.com/api.html"]},{"id":53,"app_name":"Ahrefs","category":"Data, SEO and Scraping","auth_methods":["API key"],"access_type":"gated","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.ahrefs.com/"]},{"id":54,"app_name":"MrScraper","category":"Data, SEO and Scraping","auth_methods":["Token"],"access_type":"self-serve","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.mrscraper.com/"]},{"id":55,"app_name":"Apify","category":"Data, SEO and Scraping","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.apify.com/"]},{"id":56,"app_name":"Firecrawl","category":"Data, SEO and Scraping","auth_methods":["API key"],"access_type":"self-serve","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://firecrawl.dev/"]},{"id":57,"app_name":"Bright Data","category":"Data, SEO and Scraping","auth_methods":["API key","Basic"],"access_type":"gated","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.brightdata.com/api-reference/authentication"]},{"id":58,"app_name":"Sherlock","category":"Data, SEO and Scraping","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://github.com/sherlock-project/sherlock"]},{"id":59,"app_name":"Waterfall.io","category":"Data, SEO and Scraping","auth_methods":["API key"],"access_type":"gated","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://docs.waterfall.io/v1/authentication"]},{"id":60,"app_name":"Clay","category":"Data, SEO and Scraping","auth_methods":["API key"],"access_type":"mixed","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developers.clay.com/public-api/authentication"]},{"id":61,"app_name":"GitHub","category":"Developer, Infra and Data platforms","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.github.com/rest"]},{"id":62,"app_name":"Vercel","category":"Developer, Infra and Data platforms","auth_methods":["Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://vercel.com/docs/rest-api"]},{"id":63,"app_name":"Netlify","category":"Developer, Infra and Data platforms","auth_methods":["OAuth2","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://docs.netlify.com/api/get-started/"]},{"id":64,"app_name":"Cloudflare","category":"Developer, Infra and Data platforms","auth_methods":["API key","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.cloudflare.com/api/"]},{"id":65,"app_name":"Supabase","category":"Developer, Infra and Data platforms","auth_methods":["OAuth2","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://supabase.com/docs"]},{"id":66,"app_name":"Neo4j","category":"Developer, Infra and Data platforms","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://neo4j.com/docs/"]},{"id":67,"app_name":"Snowflake","category":"Developer, Infra and Data platforms","auth_methods":["OAuth2","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication"]},{"id":68,"app_name":"MongoDB Atlas","category":"Developer, Infra and Data platforms","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://www.mongodb.com/docs/atlas/api/"]},{"id":69,"app_name":"Datadog","category":"Developer, Infra and Data platforms","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.datadoghq.com/api/latest/authentication/"]},{"id":70,"app_name":"Sentry","category":"Developer, Infra and Data platforms","auth_methods":["OAuth2","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.sentry.io/api/auth/"]},{"id":71,"app_name":"Notion","category":"Productivity and Project Management","auth_methods":["OAuth2","Token"],"access_type":"mixed","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.notion.com/"]},{"id":72,"app_name":"Airtable","category":"Productivity and Project Management","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://airtable.com/developers/web/api/authentication"]},{"id":73,"app_name":"Linear","category":"Productivity and Project Management","auth_methods":["OAuth2","API key"],"access_type":"mixed","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.linear.app/"]},{"id":74,"app_name":"Jira","category":"Productivity and Project Management","auth_methods":["Basic"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/"]},{"id":75,"app_name":"Asana","category":"Productivity and Project Management","auth_methods":["Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developers.asana.com/"]},{"id":76,"app_name":"Monday.com","category":"Productivity and Project Management","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.monday.com/"]},{"id":77,"app_name":"ClickUp","category":"Productivity and Project Management","auth_methods":["OAuth2","Token"],"access_type":"mixed","gate_type":"admin_approval","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.clickup.com/docs/authentication"]},{"id":78,"app_name":"Coda","category":"Productivity and Project Management","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://coda.io/developers"]},{"id":79,"app_name":"Smartsheet","category":"Productivity and Project Management","auth_methods":["OAuth2","API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication"]},{"id":80,"app_name":"Harvest","category":"Productivity and Project Management","auth_methods":["OAuth2","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/"]},{"id":81,"app_name":"Stripe","category":"Finance and Fintech","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://docs.stripe.com/api/authentication"]},{"id":82,"app_name":"Plaid","category":"Finance and Fintech","auth_methods":["Unknown"],"access_type":"unknown","gate_type":"unknown","buildability_verdict":"unclear","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://plaid.com/docs/"]},{"id":83,"app_name":"Binance","category":"Finance and Fintech","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://binance-docs.github.io/"]},{"id":84,"app_name":"Paygent Connect","category":"Finance and Fintech","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://docs.paygent.to/reference/api-reference/"]},{"id":85,"app_name":"iPayX","category":"Finance and Fintech","auth_methods":["Unknown"],"access_type":"unknown","gate_type":"unknown","buildability_verdict":"unclear","confidence":"medium","blocker":"Lack of public API documentation and authentication details","composio_toolkit_exists":false,"evidence_urls":["https://ipayx.ai/docs"]},{"id":86,"app_name":"QuickBooks","category":"Finance and Fintech","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.intuit.com/"]},{"id":87,"app_name":"Xero","category":"Finance and Fintech","auth_methods":["OAuth2"],"access_type":"mixed","gate_type":"partnership","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://developer.xero.com/"]},{"id":88,"app_name":"Brex","category":"Finance and Fintech","auth_methods":["Token"],"access_type":"gated","gate_type":"admin_approval","buildability_verdict":"blocked","confidence":"high","blocker":"Requires manually created admin token for authentication","composio_toolkit_exists":true,"evidence_urls":["https://developer.brex.com/guides/authentication"]},{"id":89,"app_name":"Ramp","category":"Finance and Fintech","auth_methods":["Unknown"],"access_type":"unknown","gate_type":"unknown","buildability_verdict":"unclear","confidence":"low","blocker":"lack of concrete information on authentication and access requirements","composio_toolkit_exists":true,"evidence_urls":["https://docs.ramp.com/developer-api/v1/authentication/"]},{"id":90,"app_name":"PitchBook","category":"Finance and Fintech","auth_methods":["API key"],"access_type":"gated","gate_type":"paid_plan","buildability_verdict":"unclear","confidence":"high","blocker":"API key must be manually obtained from an account manager","composio_toolkit_exists":false,"evidence_urls":["https://pitchbook.com/help/PitchBook-api"]},{"id":91,"app_name":"NotebookLM","category":"AI, Research and Media-native","auth_methods":["API key","Token"],"access_type":"gated","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks"]},{"id":92,"app_name":"Otter AI","category":"AI, Research and Media-native","auth_methods":["API key","Token"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API"]},{"id":93,"app_name":"Fathom","category":"AI, Research and Media-native","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"unclear","confidence":"medium","blocker":"No public API details or authentication specifications are present in the provided text.","composio_toolkit_exists":true,"evidence_urls":["https://developers.fathom.ai/"]},{"id":94,"app_name":"Consensus","category":"AI, Research and Media-native","auth_methods":["API key"],"access_type":"self-serve","gate_type":"unknown","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://consensus.app/home/api/"]},{"id":95,"app_name":"Reducto","category":"AI, Research and Media-native","auth_methods":["API key"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://docs.reducto.ai/quickstart"]},{"id":96,"app_name":"Devin","category":"AI, Research and Media-native","auth_methods":["Unknown"],"access_type":"unknown","gate_type":"unknown","buildability_verdict":"unclear","confidence":"medium","blocker":"Missing authentication and access details for the API","composio_toolkit_exists":true,"evidence_urls":["https://docs.devin.ai/api-reference/authentication"]},{"id":97,"app_name":"higgsfield","category":"AI, Research and Media-native","auth_methods":["OAuth2"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://docs.higgsfield.ai/docs/authentication"]},{"id":98,"app_name":"Mermaid CLI","category":"AI, Research and Media-native","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://github.com/mermaid-js/mermaid-cli"]},{"id":99,"app_name":"YouTube Transcript","category":"AI, Research and Media-native","auth_methods":["API key"],"access_type":"self-serve","gate_type":"paid_plan","buildability_verdict":"buildable_today","confidence":"high","blocker":null,"composio_toolkit_exists":true,"evidence_urls":["https://transcriptapi.com/docs/api/"]},{"id":100,"app_name":"Grain","category":"AI, Research and Media-native","auth_methods":["Unknown"],"access_type":"self-serve","gate_type":"none","buildability_verdict":"buildable_today","confidence":"medium","blocker":null,"composio_toolkit_exists":false,"evidence_urls":["https://developers.grain.com/"]}];
-
+ 
 // ---------- Ledger grid ----------
 const ledgerGrid = document.getElementById('ledgerGrid');
 const verdictClass = v => v === 'buildable_today' ? 'c-buildable' : v === 'blocked' ? 'c-blocked' : 'c-unclear';
@@ -470,13 +523,13 @@ DATA.forEach(app => {
   cell.title = `${app.app_name} — ${app.buildability_verdict.replace('_',' ')}`;
   ledgerGrid.appendChild(cell);
 });
-
+ 
 // ---------- Stats ----------
 const counts = {buildable_today:0, unclear:0, blocked:0};
 DATA.forEach(a => counts[a.buildability_verdict]++);
 const selfServe = DATA.filter(a=>a.access_type==='self-serve').length;
 const noToolkit = DATA.filter(a=>a.buildability_verdict==='buildable_today' && !a.composio_toolkit_exists).length;
-
+ 
 const statRow = document.getElementById('statRow');
 const stats = [
   [counts.buildable_today, 'Buildable today'],
@@ -490,7 +543,7 @@ stats.forEach(([num,label])=>{
   el.innerHTML = `<div class="stat-num">${num}</div><div class="stat-label">${label}</div>`;
   statRow.appendChild(el);
 });
-
+ 
 // ---------- Category self-serve bars ----------
 const catMap = {};
 DATA.forEach(a=>{
@@ -508,7 +561,7 @@ Object.entries(catMap)
     row.innerHTML = `<div class="bar-label">${cat}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-val">${pct}%</div>`;
     catBars.appendChild(row);
   });
-
+ 
 // ---------- Auth distribution bars ----------
 const authMap = {};
 DATA.forEach(a=>{
@@ -526,12 +579,51 @@ Object.entries(authMap).sort((a,b)=>b[1]-a[1]).forEach(([method,count])=>{
   row.innerHTML = `<div class="bar-label">${method}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-val">${count}</div>`;
   authBars.appendChild(row);
 });
-
+ 
+// ---------- Category x Gate-type matrix ----------
+const GATE_TYPES = ['none','paid_plan','admin_approval','partnership','unknown'];
+const GATE_LABELS = {none:'None', paid_plan:'Paid plan', admin_approval:'Admin approval', partnership:'Partnership', unknown:'Unknown'};
+const categories = [...new Set(DATA.map(a=>a.category))].sort();
+ 
+const matrixCounts = {};
+let maxCell = 0;
+categories.forEach(cat=>{
+  matrixCounts[cat] = {};
+  GATE_TYPES.forEach(g=>{
+    const c = DATA.filter(a=>a.category===cat && (a.gate_type||'unknown')===g).length;
+    matrixCounts[cat][g] = c;
+    if(c > maxCell) maxCell = c;
+  });
+});
+ 
+function heatColor(count){
+  if(count===0) return 'transparent';
+  const alpha = 0.15 + 0.65 * (count/maxCell);
+  return `rgba(63,207,192,${alpha.toFixed(2)})`;
+}
+ 
+const matrixEl = document.getElementById('gateMatrix');
+let matrixHtml = '<thead><tr><th class="row-head">Category</th>' +
+  GATE_TYPES.map(g=>`<th>${GATE_LABELS[g]}</th>`).join('') + '</tr></thead><tbody>';
+categories.forEach(cat=>{
+  matrixHtml += `<tr><th class="row-head">${cat}</th>`;
+  GATE_TYPES.forEach(g=>{
+    const count = matrixCounts[cat][g];
+    matrixHtml += `<td><div class="matrix-cell" style="background:${heatColor(count)}">${count>0?count:''}</div></td>`;
+  });
+  matrixHtml += '</tr>';
+});
+matrixHtml += '</tbody>';
+matrixEl.innerHTML = matrixHtml;
+ 
+const scaleEl = document.getElementById('matrixScale');
+scaleEl.innerHTML = [0.15,0.3,0.45,0.6,0.8].map(a=>`<div style="flex:1;background:rgba(63,207,192,${a})"></div>`).join('');
+ 
 // ---------- Table ----------
 let activeVerdict = 'all';
 let activeCat = 'all';
 let searchTerm = '';
-
+ 
 const verdictFilters = document.getElementById('verdictFilters');
 const verdictOptions = [
   ['all','All'],
@@ -551,7 +643,7 @@ verdictOptions.forEach(([val,label])=>{
   };
   verdictFilters.appendChild(btn);
 });
-
+ 
 const catFilter = document.getElementById('catFilter');
 [...new Set(DATA.map(a=>a.category))].sort().forEach(cat=>{
   const opt = document.createElement('option');
@@ -560,10 +652,10 @@ const catFilter = document.getElementById('catFilter');
 });
 catFilter.onchange = ()=>{ activeCat = catFilter.value; renderTable(); };
 document.getElementById('searchBox').oninput = (e)=>{ searchTerm = e.target.value.toLowerCase(); renderTable(); };
-
+ 
 const tableBody = document.getElementById('tableBody');
 const rowCount = document.getElementById('rowCount');
-
+ 
 function renderTable(){
   const filtered = DATA.filter(a=>{
     if(activeVerdict!=='all' && a.buildability_verdict!==activeVerdict) return false;
@@ -578,7 +670,7 @@ function renderTable(){
       <td><div class="app-name">${a.app_name}</div><div class="cat-tag">${a.category}</div></td>
       <td>${authChips || '—'}</td>
       <td class="mono" style="font-size:12.5px;">${a.access_type}</td>
-      <td><span class="verdict-tag v-${a.buildability_verdict}">${a.buildability_verdict.replace('_',' ')}</span></td>
+      <td><span class="verdict-tag v-${a.buildability_verdict}"><span class="status-dot"></span>${a.buildability_verdict.replace('_',' ')}</span></td>
       <td class="mono" style="font-size:12.5px; color:var(--ink-soft);">${a.confidence}</td>
       <td>${evi}</td>
     </tr>`;
@@ -589,3 +681,4 @@ renderTable();
 </script>
 </body>
 </html>
+ 
