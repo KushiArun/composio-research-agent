@@ -24,6 +24,12 @@ load_dotenv()
 
 # ---------- CONFIG ----------
 TEST_LIMIT = None
+import sys
+if len(sys.argv) > 1:
+    try:
+        TEST_LIMIT = int(sys.argv[1])
+    except ValueError:
+        pass
 SEED_FILE = "seed.json"
 OUTPUT_FILE = "results_v1.json"
 SLEEP_BETWEEN_APPS = 5

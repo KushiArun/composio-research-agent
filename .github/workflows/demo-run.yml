@@ -1,0 +1,42 @@
+﻿name: Run research agent (demo)
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_count:
+        description: "Number of apps to research (from the top of seed.json)"
+        required: false
+        default: "3"
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install composio python-dotenv ddgs beautifulsoup4 requests groq
+
+      - name: Run agent on a demo subset
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          rm -f results_v1.json
+          python research_agent.py ${{ github.event.inputs.app_count }}
+
+      - name: Show output
+        run: cat results_v1.json
+
+      - name: Upload result as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-run-results
+          path: results_v1.json
